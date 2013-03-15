@@ -6,7 +6,7 @@ require_once '/var/www/image.php';
 require_once '/var/www/tineye_service_request.php';
 
 //
-// Class to send requests to a TinEye Services API.
+// A base class to handle metadata-related requests to a TinEye Services API.
 //
 class MetadataRequest extends TinEyeServiceRequest
 {
@@ -17,20 +17,19 @@ class MetadataRequest extends TinEyeServiceRequest
 
     //
     // Add images to the collection using data.
-    
+    //
     // Arguments:
     // - `images`, a list of Image objects.
     // - `ignore_background`, if true, ignore the background color of the images,
-    //   if false, include the background color of the images.
-          
+    //    if false, include the background color of the images.
+    //
     // Returned:
     // - `status`, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
     function add_image($images, $ignore_background=true)
     {
-        if (!is_array($images))
-            throw new TinEyeServiceError('Need to pass a list of Image objects');
+        assert_is_array($images, "Image objects");
 
         $params = array();
         $file_params = array('ignore_background' => $ignore_background);
@@ -66,8 +65,7 @@ class MetadataRequest extends TinEyeServiceRequest
     //
     function add_url($images, $ignore_background=true)
     {
-        if (!is_array($images))
-            throw new TinEyeServiceError('Need to pass a list of Image objects');
+        assert_is_array($images, "Image objects");
 
         $params = array();
         $file_params = array('ignore_background' => $ignore_background);
@@ -103,27 +101,12 @@ class MetadataRequest extends TinEyeServiceRequest
     //
     function update_metadata($filepaths, $metadata)
     {
-        if (!is_array($filepaths))
-            throw new TinEyeServiceError('Need to pass a list of filepaths');
+        assert_is_array($filepaths, "filepaths");
+        assert_is_array($metadata,  "metadata");
         
-        if (!is_array($metadata))
-            throw new TinEyeServiceError('Need to pass a list of metadata');
-        
-        $params = array();
-        $counter = 0;
-        
-        foreach ($filepaths as $filepath)
-        {
-            $params["filepaths[$counter]"] = $filepath;
-            $counter += 1;
-        }
-
-        $counter = 0;
-        foreach ($metadata as $metadatum)
-        {
-            $params["metadata[$counter]"] = $metadatum;
-            $counter += 1;
-        }
+        $params = array();        
+        fill_array_params($params, $filepaths, "filepaths");
+        fill_array_params($params, $metadata,  "metadata");
 
         return $this->request('update_metadata', $params);
     }
@@ -142,17 +125,10 @@ class MetadataRequest extends TinEyeServiceRequest
     //
     function get_metadata($filepaths)
     {
+        assert_is_array($filepaths, "filepaths");
+
         $params = array();
-        $counter = 0;
-        
-        if (!is_array($filepaths))
-            throw new TinEyeServiceError('Need to pass a list of filepaths');
-        
-        foreach ($filepaths as $filepath)
-        {
-            $params["filepaths[$counter]"] = $filepath;
-            $counter += 1;
-        }
+        fill_array_params($params, $filepaths, "filepaths");
 
         return $this->request('get_metadata', $params);
     }
