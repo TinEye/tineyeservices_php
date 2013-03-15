@@ -57,26 +57,26 @@ class MulticolorEngineRequest extends MetadataRequest
 	//   + `filepath`, match image path.
 	//
     function search_image($image, 
-    					  $ignore_background 		  = True, 
+    					  $ignore_background          = True, 
     					  $ignore_interior_background = True,
                      	  $metadata 				  = '', 
-                     	  $return_metadata 			  = '', 
-                     	  $sort_metadata 			  = False, 
-                     	  $min_score 				  = 0,
-                     	  $offset 					  = 0, 
+                     	  $return_metadata 	          = '', 
+                     	  $sort_metadata 	          = False, 
+                     	  $min_score 				  =    0,
+                     	  $offset 					  =    0, 
                      	  $limit 					  = 5000)
     {
         if (!get_class($image) == 'Image')
             throw new TinEyeServiceError('Need to pass an Image object');
 
-        $params = array('ignore_background'			 => $ignore_background,
-                  		'ignore_interior_background' => $ignore_interior_background,
-                  		'metadata'					 => $metadata,
-                  		'return_metadata'			 => $return_metadata,
-                  		'sort_metadata'				 => $sort_metadata,
-                  		'min_score'					 => $min_score,
-                  		'offset'					 => $offset,
-                  		'limit'						 => $limit);
+        $params = array('ignore_background'          => $ignore_background,
+                        'ignore_interior_background' => $ignore_interior_background,
+                        'metadata'					 => $metadata,
+                        'return_metadata'			 => $return_metadata,
+                        'sort_metadata'				 => $sort_metadata,
+                        'min_score'					 => $min_score,
+                        'offset'					 => $offset,
+                        'limit'						 => $limit);
 
         $file_params["image"]    = "@$image->local_filepath";
         $file_params["filepath"] =   $image->collection_filepath;
@@ -213,8 +213,8 @@ class MulticolorEngineRequest extends MetadataRequest
                      	  $metadata 				  = '',
                    		  $return_metadata 			  = '', 
                    		  $sort_metadata 			  = False, 
-                   		  $min_score 				  = 0, 
-                   		  $offset 					  = 0, 
+                   		  $min_score 				  =    0, 
+                   		  $offset 					  =    0, 
                    		  $limit 					  = 5000)
     {
         $params = array('ignore_background'			 => $ignore_background,
@@ -258,8 +258,8 @@ class MulticolorEngineRequest extends MetadataRequest
     function search_metadata($metadata, 
     						 $return_metadata = '', 
     						 $sort_metadata   = False,
-                        	 $min_score		  = 0, 
-                        	 $offset		  = 0, 
+                        	 $min_score		  =    0, 
+                        	 $offset		  =    0, 
                         	 $limit			  = 5000)
     {
         $params = array('metadata'		  => $metadata,

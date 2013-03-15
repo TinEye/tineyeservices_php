@@ -31,10 +31,11 @@ function assert_is_array($item, $name)
         throw new TinEyeServiceError("Need to pass a list of $name");
 }
 
+//
+// A class to send requests to a TinEye servies API.
+//
 class TinEyeServiceRequest
 {
-	// A class to send requests to a TinEye servies API.
-
 	function __construct($api_url='http://localhost/rest/', $username=NULL, $password=NULL)
 	{
 		$this->api_url		= $api_url;
@@ -53,9 +54,9 @@ class TinEyeServiceRequest
 			$options['auth'] = new Requests_Auth_Basic(array($this->username, $this->password));
 
 		echo "$method<br>";
-		echo var_dump($params);
+		var_dump($params);
 		echo "<br>";
-		echo var_dump($file_params);
+		var_dump($file_params);
 		echo "<br>";
 
 		# construct the query URL.
@@ -76,6 +77,7 @@ class TinEyeServiceRequest
             throw new TinEyeServiceError("HTTP failure, status code $response->status_code");
 
 		# get the response as an object.
+        # despite the name it is PHP data, not a JSON string.
 		$response_json = json_decode($response->body);
 
         echo($response->body);
@@ -95,7 +97,7 @@ class TinEyeServiceRequest
     //
     // Arguments:
     // - `filepaths`, a list of string filepaths as returned by
-    //   a search or list call.
+    //    a search or list call.
     //
     // Returned:
     // - `status`, one of ok, warn, fail.

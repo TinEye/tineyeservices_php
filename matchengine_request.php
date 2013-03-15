@@ -44,12 +44,11 @@ class MatchEngineRequest extends TinEyeServiceRequest
     //
     function add_image($images)
     {
+        assert_is_array($images, "Image objects");
+
         $params = array();
         $file_params = array();
         $counter = 0;
-
-        if (!is_array($images))
-            throw new TinEyeServiceError('Need to pass a list of Image objects');
 
         foreach ($images as $image)
         {
@@ -76,11 +75,10 @@ class MatchEngineRequest extends TinEyeServiceRequest
     //
     function add_url($images)
     {
+        assert_is_array($images, "Image objects");
+
         $params = array();
         $counter = 0;
-        
-        if (!is_array($images))
-            throw new TinEyeServiceError('Need to pass a list of Image objects');
 
         foreach ($images as $image)
         {
@@ -117,16 +115,15 @@ class MatchEngineRequest extends TinEyeServiceRequest
     //
     function search_image($image, $min_score=0, $offset=0, $limit=10, $check_horizontal_flip=false)
     {
+        assert_is_array($images, "Image objects");
+
         $params = array('min_score'             => $min_score,
                         'offset'                => $offset,
                         'limit'                 => $limit,
                         'check_horizontal_flip' => $check_horizontal_flip);
 
-        if (!get_class($image) == 'Image')
-            throw new TinEyeServiceError('Need to pass an Image object');
-
-        $file_params["image"] = "@{$image->local_filepath}";
-        $file_params["filepath"] = $image->collection_filepath;
+        $file_params["image"]    = "@{$image->local_filepath}";
+        $file_params["filepath"] =    $image->collection_filepath;
 
         return $this->request('search', $params, $file_params);
     }
@@ -137,7 +134,7 @@ class MatchEngineRequest extends TinEyeServiceRequest
     //
     // Arguments:
     // - `filepath`, a filepath string of an image already in the collection
-    //   as returned by a search or list operation.
+    //    as returned by a search or list operation.
     // - `min_score`, minimum score that should be returned.
     // - `offset`, offset of results from the start.
     // - `limit`, maximum number of matches that should be returned.

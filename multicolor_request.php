@@ -60,20 +60,20 @@ class MulticolorEngineRequest extends MetadataRequest
                      	  $metadata='', $return_metadata='', $sort_metadata=False, $min_score=0,
                      	  $offset=0, $limit=5000)
     {
-        $params = array('ignore_background'			 => $ignore_background,
+        $params = array('ignore_background'          => $ignore_background,
                   		'ignore_interior_background' => $ignore_interior_background,
-                  		'metadata'					 => $metadata,
-                  		'return_metadata'			 => $return_metadata,
-                  		'sort_metadata'				 => $sort_metadata,
-                  		'min_score'					 => $min_score,
-                  		'offset'					 => $offset,
-                  		'limit'						 => $limit);
+                  		'metadata'				     => $metadata,
+                  		'return_metadata'		     => $return_metadata,
+                  		'sort_metadata'			     => $sort_metadata,
+                  		'min_score'				     => $min_score,
+                  		'offset'			         => $offset,
+                  		'limit'			             => $limit);
 
         if (!get_class($image) == 'Image')
             throw new TinEyeServiceError('Need to pass an Image object');
 
-        $file_params["image"] = "@$image->local_filepath";
-        $file_params["filepath"] = $image->collection_filepath;
+        $file_params["image"]    = "@$image->local_filepath";
+        $file_params["filepath"] =   $image->collection_filepath;
 
         return $this->request('color_search', $params, $file_params)
     }
