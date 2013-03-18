@@ -10,11 +10,14 @@ See `<http://services.tineye.com/>`_ for more information.
 Installation
 ------------
 
-Download the latest version of the library and install with pip:
+Download the latest version of the library:
 
 ::
 
-    $ wget https://github.com/TinEye/tineyeservices_php/zipball/master --output-document=tineyeservices.zip
+    $ wget https://github.com/TinEye/tineyeservices_php/archive/master.zip
+
+and place the files where a PHP require statement will find them. 
+That place depends on your particular OS and installation.
 
 
 Documentation
@@ -25,4 +28,4 @@ View `documentation <http://services.tineye.com/library/php/docs/>`_.
 Support
 -------
 
-Please send comments, recommendations, or bugs reports to support@tineye.com.
+Please send comments, recommendations, and bug reports to support@tineye.com.
