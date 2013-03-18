@@ -16,7 +16,7 @@ Download the latest version of the library:
 
     $ wget https://github.com/TinEye/tineyeservices_php/archive/master.zip
 
-and place the files where a PHP require statement will find them. 
+and place the files where a PHP ``require`` statement will find them. 
 That place depends on your particular OS and installation.
 
 
