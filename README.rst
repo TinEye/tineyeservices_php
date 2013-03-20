@@ -1,4 +1,4 @@
-TinEye Services API Python client
+TinEye Services API PHP client
 =================================
 
 **tineyeservices** is a PHP client library for the MatchEngine, MobileEngine,
