@@ -4,22 +4,32 @@
 
 require_once 'tineye_service_request.php';
 
-//
-// A class representing an image.
-//
-// Image on filesystem:
-//     >>> require_once 'image.php';
-//     >>> $image = new Image('/path/to/image.jpg', '', 'collection.jpg');
-//
-// Image URL:
-//     >>> $image = new Image('', 'http://www.tineye.com/images/meloncat.jpg', 'collection.jpg');
-//
-// Image with metadata:
-//     >>> $metadata = json_encode(array("keywords" => array("dolphin")));
-//     >>> $image = new Image('/path/to/image.jpg', '', '', $metadata);
-//
+///
+/// A class representing an image.
+///
+/// <pre>
+/// Image on filesystem:
+///     >>> require_once 'image.php';
+///     >>> $image = new Image('/path/to/image.jpg', '', 'collection.jpg');
+///
+/// Image URL:
+///     >>> $image = new Image('', 'http:///www.tineye.com/images/meloncat.jpg', 'collection.jpg');
+///
+/// Image with metadata:
+///     >>> $metadata = json_encode(array("keywords" => array("dolphin")));
+///     >>> $image = new Image('/path/to/image.jpg', '', '', $metadata);
+/// </pre>
+///
 class Image
 {
+    /// Construct an object describing an image.
+
+    /// Arguments:
+    /// - `local_filepath`, the path to the image, if it is to be taken from a file.
+    /// - `url`, the URL of the image, if it is to be taken from the web.
+    /// - `collection_filepath`, the path to be given to the image when added to the collection.
+    /// - `metadata`, the metadata to be stored with the image when added to the collection.
+    ///
     function __construct($local_filepath='', $url='', $collection_filepath='', $metadata=null)
     {
         $this->data = null;
@@ -56,6 +66,9 @@ class Image
         $this->metadata = $metadata;
     }
 
+    ///
+    /// Return a human-readable description of the object.
+    ///
     function __toString()
     {
         return "Image(local_filepath=$this->local_filepath, url=$this->url, collection_filepath=$this->collection_filepath, metadata=$this->metadata)";

@@ -5,9 +5,9 @@
 require_once 'Requests.php';
 Requests::register_autoloader();
 
-/**
-* The base class for all TinEye Services exceptions.
-*/
+///
+/// The base class for all TinEye Services exceptions.
+///
 class TinEyeServiceException extends Exception
 {}
  
@@ -33,21 +33,20 @@ function assert_is_array($item, $name)
         throw new TinEyeServiceError("Need to pass a list of $name");
 }
 
-//
-// A class to send requests to a TinEye Servies API.
-//
+///
+/// A base class to send requests to any TinEye Servies API.
+///
 class TinEyeServiceRequest
 {
-    //
-    // Construct an object to access a particular API.
-    //
-    // Arguments:
-    // - `api_url`, the basic URL for access, ie everything up to 
-    //              the method name in an actual request.
-    //              eg, http://someengine.tineye.com/name/rest/
-    // - `username`, the username for the API account.
-    // - `password`, the password for the API account.
-    //
+    /// Construct an object to access a particular API.
+
+    /// Arguments:
+    /// - `api_url`, the basic URL for access, i.e., everything up to 
+    ///              the method name in an actual request.
+    ///              E.g., http://someengine.tineye.com/name/rest/
+    /// - `username`, the username for the API account.
+    /// - `password`, the password for the API account.
+    ///
     function __construct($api_url, $username=NULL, $password=NULL)
     {
         $this->api_url      = $api_url;
@@ -55,23 +54,22 @@ class TinEyeServiceRequest
         $this->password     = $password;
     }
 
-    //
-    // Make an http request, return the response as an object.
-    //
-    // Arguments:
-    // - `method`, the function to execute, eg 'SEARCH'.
-    // - `params`, any parameters required by a GET method. 
-    //             They will be passed as a query part in the URL.
-    // - `file_params`, any parameters required by a POST method. 
-    //                  They will be passed as form data.
-    //
-    // Returned:
-    // an array, containing at least 'status' and 'error', and also 'result' if it applies.
-    // the structure of 'result' depends on the method.
-    // - `status`, a string, one of ok, warn, fail.
-    // - `error`,  describes the error if status is not set to ok.
-    // - `result`, an array.
-    //
+    /// Make an http request, return the response as an object.
+    
+    /// Arguments:
+    /// - `method`, the function to execute, eg 'SEARCH'.
+    /// - `params`, any parameters required by a GET method. 
+    ///             They will be passed as a query part in the URL.
+    /// - `file_params`, any parameters required by a POST method. 
+    ///                  They will be passed as form data.
+    ///
+    /// Returned:
+    /// an array, containing at least 'status' and 'error', and also 'result' if it applies.
+    /// the structure of 'result' depends on the method.
+    /// - `status`, a string, one of ok, warn, fail.
+    /// - `error`,  describes the error if status is not set to ok.
+    /// - `result`, an array.
+    ///
     protected function request($method, $params=array(), $file_params=NULL)
     {
         # set up basic authentication.
@@ -106,18 +104,17 @@ class TinEyeServiceRequest
         return $response_json;
     }
 
-    //
-    // Delete images from the collection.
-    //
-    // Arguments:
-    // - `filepaths`, a list of string filepaths as returned by
-    //    a search or list call.
-    //
-    // Returned:
-    //    an array containing
-    // - `status`, a string, one of ok, warn, fail.
-    // - `error`, describes the error if status is not set to ok.
-    //
+    /// Delete images from the collection.
+    
+    /// Arguments:
+    /// - `filepaths`, a list of string filepaths as returned by
+    ///    a search or list call.
+    /// 
+    /// Returned:
+    ///    an array containing
+    /// - `status`, a string, one of ok, warn, fail.
+    /// - `error`, describes the error if status is not set to ok.
+    /// 
     function delete($filepaths)
     {
         if (!is_array($filepaths))
@@ -135,46 +132,43 @@ class TinEyeServiceRequest
         return $this->request('delete', $params);
     }
 
-    //
-    // Get the number of items currently in the collection.
-    //
-    // Returned:
-    //    an array containing
-    // - `status`, a string, one of ok, warn, fail.
-    // - `error`, describes the error if status is not set to ok.
-    // - `result`, a list containing the number of images in the collection.
-    //
+    /// Get the number of items currently in the collection.
+     
+    /// Returned:
+    ///    an array containing
+    /// - `status`, a string, one of ok, warn, fail.
+    /// - `error`, describes the error if status is not set to ok.
+    /// - `result`, a list containing the number of images in the collection.
+    /// 
     function count()
     {
         return $this->request('count');
     }   
 
-    //
-    // List the images present in the collection.
-    //
-    // Arguments:
-    // - `offset`, offset of results from the start.
-    // - `limit`, maximum number of images that should be returned.
-    //
-    // Returned:
-    //    an array containing
-    // - `status`, a string, one of ok, warn, fail.
-    // - `error`, describes the error if status is not set to ok.
-    // - `result`, a list of filepaths.
-    //
+    /// List the images present in the collection.
+     
+    /// Arguments:
+    /// - `offset`, offset of results from the start.
+    /// - `limit`, maximum number of images that should be returned.
+    /// 
+    /// Returned:
+    ///    an array containing
+    /// - `status`, a string, one of ok, warn, fail.
+    /// - `error`, describes the error if status is not set to ok.
+    /// - `result`, a list of filepaths.
+    /// 
     function listing($offset=0, $limit=20)
     {
         return $this->request('list', array('offset' => $offset, 'limit' => $limit));
     }
 
-    //
-    // Check whether the API search server is running.
-    //
-    // Returned:
-    //    an array containing
-    // - `status`, a string, one of ok, warn, fail.
-    // - `error`, describes the error if status is not set to ok.
-    //
+    /// Check whether the API search server is running.
+     
+    /// Returned:
+    ///    an array containing
+    /// - `status`, a string, one of ok, warn, fail.
+    /// - `error`, describes the error if status is not set to ok.
+    /// 
     function ping()
     {
         return $this->request('ping');
