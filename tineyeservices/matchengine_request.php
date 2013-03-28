@@ -1,7 +1,5 @@
 <?php
 
-# Copyright (c) 2012 Idee Inc. All rights reserved worldwide.
-
 require_once 'image.php';
 require_once 'tineye_service_request.php';
 
@@ -26,6 +24,7 @@ require_once 'tineye_service_request.php';
 ///      'status': 'ok'}
 /// </pre>
 ///
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 class MatchEngineRequest extends TinEyeServiceRequest
 {
     /// Return a human-readable description of the object.

@@ -1,7 +1,5 @@
 <?php
 
-# Copyright (c) 2012 Idee Inc. All rights reserved worldwide.
-
 require_once 'matchengine_request.php';
 
 /// <b>A user class to send requests to a MobileEngine API.</b>
@@ -25,6 +23,7 @@ require_once 'matchengine_request.php';
 ///      'status': 'ok'}
 /// </pre>
 ///
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 class MobileEngineRequest extends MatchEngineRequest
 {
     /// Return a human-readable description of the object.

@@ -1,11 +1,11 @@
 <?php
 
-# Copyright (c) 2013 Idee Inc. All rights reserved worldwide.
-
 require_once 'image.php';
 require_once 'tineye_service_request.php';
 
 /// A base class to handle metadata-related requests to a TinEye Services API.
+
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 class MetadataRequest extends TinEyeServiceRequest
 {
     /// Add images to the collection using data.

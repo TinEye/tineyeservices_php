@@ -1,7 +1,5 @@
 <?php
 
-# Copyright (c) 2013 Idee Inc. All rights reserved worldwide.
-
 require_once 'Requests.php';
 Requests::register_autoloader();
 
@@ -13,6 +11,7 @@ Requests::register_autoloader();
 /// 
 /// See http://services.tineye.com/ for more information.
 ///
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 
 /// The base class for all TinEye Services exceptions.
 class TinEyeServiceException extends Exception
@@ -43,6 +42,8 @@ function assert_is_array($item, $name)
 }
 
 /// A base class to send requests to any TinEye Servies API.
+
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 class TinEyeServiceRequest
 {
     /// Construct an object to access a particular API.

@@ -1,10 +1,8 @@
 <?php
 
-# Copyright (c) 2013 Idee Inc. All rights reserved worldwide.
-
 require_once 'tineye_service_request.php';
 
-/// A class representing an image.
+/// <b>A user class representing an image.</b>
 
 /// <pre>
 /// Image on filesystem:
@@ -19,6 +17,7 @@ require_once 'tineye_service_request.php';
 ///     >>> $image = new Image('/path/to/image.jpg', '', '', $metadata);
 /// </pre>
 ///
+/// \copyright 2013 Idee Inc. All rights reserved worldwide.
 class Image
 {
     /// Construct an object describing an image.

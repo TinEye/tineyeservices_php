@@ -220,7 +220,7 @@ Adding an image using data:
     &gt;&gt;&gt; require_once 'image.php';
     &gt;&gt;&gt; require_once 'multicolorengine_request.php';
     &gt;&gt;&gt; $api = new <a class="el" href="classMulticolorEngineRequest.html" title="A user class to send requests to a MulticolorEngine API.">MulticolorEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
-    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html" title="A class representing an image.">Image</a>('/path/to/image.jpg');
+    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html" title="A user class representing an image.">Image</a>('/path/to/image.jpg');
     &gt;&gt;&gt; $api-&gt;add_image(array(image));
     {u'error': [], u'method': u'add', u'result': ][, u'status': u'ok'}</pre><pre>Searching for images using colors:
     &gt;&gt;&gt; $api-&gt;search_color(colors=array('255,255,235', '12FA3B');
@@ -229,7 +229,8 @@ Adding an image using data:
      'result': [{'filepath': 'path/to/image.jpg',
                  'score': '13.00'}],
      'status': 'ok'}
-</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+</pre><dl class="section copyright"><dt>Copyright</dt><dd>2013 Idee Inc. All rights reserved worldwide. </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="acc678717b20da6312b50fe2268700bfa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -449,7 +450,7 @@ Adding an image using data:
 <p>Generate a counter for each color from the palette. </p>
 <p>The palette specifies how many of the input images contain that color, given image upload data. Arguments:</p>
 <ul>
-<li><code>images</code>, an array of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects built from local images, not URLs.</li>
+<li><code>images</code>, an array of <a class="el" href="classImage.html" title="A user class representing an image.">Image</a> objects built from local images, not URLs.</li>
 <li><code>count_colors</code>, a list of colors (palette) which you want to count. Can be RGB "255,255,255" or hex "ffffff" format.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
@@ -913,7 +914,7 @@ Adding an image using data:
 <p>Extract the dominant colors, given image upload data. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects with local file paths.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A user class representing an image.">Image</a> objects with local file paths.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
 <li><code>limit</code>, maximum number of colors that should be returned.</li>
@@ -1253,7 +1254,7 @@ Adding an image using data:
 <p>Return any matches, with corresponding scores.</p>
 <p>Arguments:</p>
 <ul>
-<li><code>image</code>, an <a class="el" href="classImage.html" title="A class representing an image.">Image</a> object.</li>
+<li><code>image</code>, an <a class="el" href="classImage.html" title="A user class representing an image.">Image</a> object.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
 <li><code>metadata</code>, metadata to be used for additional filtering.</li>
@@ -1447,7 +1448,7 @@ Adding an image using data:
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 28 2013 17:46:09 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 28 2013 18:18:14 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
