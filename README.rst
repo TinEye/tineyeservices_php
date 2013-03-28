@@ -19,11 +19,14 @@ Download the latest version of the library:
 and place the ``.php`` files where a PHP ``require`` statement will find them. 
 That place depends on your particular OS and installation.
 
+You must also download and install the Requests library, found at `<https://github.com/rmccue/Requests>`_.
+
 
 Documentation
 -------------
 
 Documentation about the use of the library is available from `<http://services.tineye.com/library/php/docs/>`_.
+
 
 Support
 -------
