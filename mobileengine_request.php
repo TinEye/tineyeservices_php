@@ -2,10 +2,10 @@
 
 # Copyright (c) 2012 Idee Inc. All rights reserved worldwide.
 
-require_once '/var/www/matchengine_request.php';
+require_once 'matchengine_request.php';
 
 //
-// Class to send requests to a MobileEngine API. 
+// A class to send requests to a MobileEngine API. 
 //
 // Adding an image using data:
 //     >>> require_once 'image.php';
