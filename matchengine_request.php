@@ -2,11 +2,11 @@
 
 # Copyright (c) 2012 Idee Inc. All rights reserved worldwide.
 
-require_once '/var/www/image.php';
-require_once '/var/www/tineye_service_request.php';
+require_once 'image.php';
+require_once 'tineye_service_request.php';
 
 //
-// Class to send requests to a MatchEngine API. 
+// A class to send requests to a MatchEngine API. 
 //
 // Adding an image using data:
 //     >>> require_once 'image.php';
@@ -39,7 +39,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `images`, a list of Image objects.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
     function add_image($images)
@@ -70,7 +71,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `images`, a list of Image objects.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
     function add_url($images)
@@ -105,7 +107,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `check_horizontal_flip`, whether to incorporate a horizontal flip check.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of dictionaries representing an image match.
     //
@@ -141,7 +144,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `check_horizontal_flip`, whether to incorporate a horizontal flip check.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of dictionaries representing an image match.
     //
@@ -173,7 +177,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `check_horizontal_flip`, whether to incorporate a horizontal flip check.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of dictionaries representing an image match.
     //
@@ -204,7 +209,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `check_horizontal_flip`, whether to incorporate a horizontal flip check.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of dictionaries representing an image match.
     //
@@ -235,7 +241,8 @@ class MatchEngineRequest extends TinEyeServiceRequest
     // - `check_horizontal_flip`, whether to incorporate a horizontal flip check.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of dictionaries representing an image match.
     //

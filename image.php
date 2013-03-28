@@ -2,8 +2,10 @@
 
 # Copyright (c) 2013 Idee Inc. All rights reserved worldwide.
 
+require_once 'tineye_service_request.php';
+
 //
-// Class representing an image.
+// A class representing an image.
 //
 // Image on filesystem:
 //     >>> require_once 'image.php';
@@ -27,8 +29,12 @@ class Image
         # If a filepath is specified, read the image and use its path as the collection filepath.
         if ($local_filepath != '')
         {
-            $fp = fopen(;, 'rb');
+            $fp = fopen($local_filepath, 'rb');
+            if (!$fp)
+                throw new TinEyeServiceError('Could not open image file.');
             $this->data = stream_get_contents($fp);
+            if (!$this->data === false)
+                throw new TinEyeServiceError('Could not read image file.');
             fclose($fp);
             $this->collection_filepath = $local_filepath
         }

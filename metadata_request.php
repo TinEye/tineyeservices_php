@@ -2,8 +2,8 @@
 
 # Copyright (c) 2013 Idee Inc. All rights reserved worldwide.
 
-require_once '/var/www/image.php';
-require_once '/var/www/tineye_service_request.php';
+require_once 'image.php';
+require_once 'tineye_service_request.php';
 
 //
 // A base class to handle metadata-related requests to a TinEye Services API.
@@ -20,19 +20,24 @@ class MetadataRequest extends TinEyeServiceRequest
     //
     // Arguments:
     // - `images`, a list of Image objects.
-    // - `ignore_background`, if true, ignore the background color of the images,
-    //    if false, include the background color of the images.
+    // - `ignore_background`, if true, ignore the background region of the images.
+    //    If false, include the background region of the images.
+    // - `ignore_interior_background`, if true, ignore the background region's color 
+    //    in isolated parts of the images. If false, include the background color 
+    //    in those parts of the images.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
-    function add_image($images, $ignore_background=true)
+    function add_image($images, $ignore_background=true, $ignore_interior_background=true)
     {
         assert_is_array($images, "Image objects");
 
         $params = array();
         $file_params = array('ignore_background' => $ignore_background);
+        $file_params = array('ignore_interior_background' => $ignore_interior_background);
         $counter = 0;
 
         foreach ($images as $image)
@@ -56,11 +61,15 @@ class MetadataRequest extends TinEyeServiceRequest
     //
     // Arguments:
     // - `images`, a list of Image objects.
-    // - `ignore_background`, if true, ignore the background color of the images,
-    //   if false, include the background color of the images.
+    // - `ignore_background`, if true, ignore the background region of the images.
+    //    If false, include the background color of the images.
+    // - `ignore_interior_background`, if true, ignore the background region's color 
+    //    in isolated parts of the images. If false, include the background color 
+    //    in those parts of the images.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
     function add_url($images, $ignore_background=true)
@@ -91,12 +100,13 @@ class MetadataRequest extends TinEyeServiceRequest
     // Force a metadata update for images already present in the collection.
     //
     // Arguments:
-    // - `filepaths`, a list of filepath strings of an image already in the collection
+    // - `filepaths`, a list of filepath strings of images already in the collection,
     //   as returned by a search or list operation.
-    // - `metadata`, the metadata to be stored with the image.
+    // - `metadata`, a list of metadata updates for the images.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     //
     function update_metadata($filepaths, $metadata)
@@ -115,7 +125,7 @@ class MetadataRequest extends TinEyeServiceRequest
     // Get associated keywords from the index given a list of image filepaths.
     //
     // Arguments:
-    // - `filepaths`, a list of filepath strings of an image already in the collection
+    // - `filepaths`, a list of filepath strings of images already in the collection,
     //   as returned by a search or list operation.
     //
     // Returned:
@@ -137,7 +147,8 @@ class MetadataRequest extends TinEyeServiceRequest
     // Get the metadata tree structure that can be searched.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, the tree structure that can be searched along with keyword type
     //   and the number of images from the index containing that keyword.
@@ -151,7 +162,8 @@ class MetadataRequest extends TinEyeServiceRequest
     // Get the metadata that can be returned by a search method along with each match.
     //
     // Returned:
-    // - `status`, one of ok, warn, fail.
+    //    an array containing
+    // - `status`, a string, one of ok, warn, fail.
     // - `error`, describes the error if status is not set to ok.
     // - `result`, a list of keywords with data type and the number of images 
     //   from the index containing that keyword.
