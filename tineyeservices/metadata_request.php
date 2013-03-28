@@ -5,9 +5,7 @@
 require_once 'image.php';
 require_once 'tineye_service_request.php';
 
-///
 /// A base class to handle metadata-related requests to a TinEye Services API.
-///
 class MetadataRequest extends TinEyeServiceRequest
 {
     /// Add images to the collection using data.
@@ -30,8 +28,9 @@ class MetadataRequest extends TinEyeServiceRequest
         assert_is_array($images, "Image objects");
 
         $params = array();
-        $file_params = array('ignore_background' => $ignore_background);
-        $file_params = array('ignore_interior_background' => $ignore_interior_background);
+        $file_params = array();
+        $file_params['ignore_background'] = $ignore_background;
+        $file_params['ignore_interior_background'] = $ignore_interior_background;
         $counter = 0;
 
         foreach ($images as $image)
@@ -65,12 +64,14 @@ class MetadataRequest extends TinEyeServiceRequest
     /// - `status`, a string, one of ok, warn, fail.
     /// - `error`, describes the error if status is not set to ok.
     ///
-    function add_url($images, $ignore_background=true)
+    function add_url($images, $ignore_background=true, $ignore_interior_background=true)
     {
         assert_is_array($images, "Image objects");
 
         $params = array();
-        $file_params = array('ignore_background' => $ignore_background);
+        $file_params = array();
+        $file_params['ignore_background'] = $ignore_background;
+        $file_params['ignore_interior_background'] = $ignore_interior_background;
         $counter = 0;
 
         foreach ($images as $image)

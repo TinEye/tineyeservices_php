@@ -4,7 +4,7 @@
 
 require_once 'matchengine_request.php';
 
-/// A class to send requests to a MobileEngine API. 
+/// <b>A user class to send requests to a MobileEngine API.</b>
 
 /// <pre>
 /// Adding an image using data:

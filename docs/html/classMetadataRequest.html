@@ -87,14 +87,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MetadataRequest Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A base class to handle metadata-related requests to a TinEye Services API.  
+ <a href="classMetadataRequest.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MetadataRequest:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classMetadataRequest.png" usemap="#MetadataRequest_map" alt=""/>
   <map id="MetadataRequest_map" name="MetadataRequest_map">
-<area href="classTinEyeServiceRequest.html" alt="TinEyeServiceRequest" shape="rect" coords="0,0,151,24"/>
-<area href="classMulticolorEngineRequest.html" title="A class to send requests to a MulticolorEngine API." alt="MulticolorEngineRequest" shape="rect" coords="0,112,151,136"/>
+<area href="classTinEyeServiceRequest.html" title="A base class to send requests to any TinEye Servies API." alt="TinEyeServiceRequest" shape="rect" coords="0,0,151,24"/>
+<area href="classMulticolorEngineRequest.html" title="A user class to send requests to a MulticolorEngine API." alt="MulticolorEngineRequest" shape="rect" coords="0,112,151,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -103,9 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fdba78a4eccf31410c4ea3085bfa884"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#a2fdba78a4eccf31410c4ea3085bfa884">add_image</a> ($images, $ignore_background=true, $ignore_interior_background=true)</td></tr>
 <tr class="memdesc:a2fdba78a4eccf31410c4ea3085bfa884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection using data.  <a href="#a2fdba78a4eccf31410c4ea3085bfa884">More...</a><br/></td></tr>
 <tr class="separator:a2fdba78a4eccf31410c4ea3085bfa884"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf71b1fe04066e79c71437912507ca68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#acf71b1fe04066e79c71437912507ca68">add_url</a> ($images, $ignore_background=true)</td></tr>
-<tr class="memdesc:acf71b1fe04066e79c71437912507ca68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection via URLs.  <a href="#acf71b1fe04066e79c71437912507ca68">More...</a><br/></td></tr>
-<tr class="separator:acf71b1fe04066e79c71437912507ca68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ef1c4be83525cbc67534fdf8a0e609"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#a87ef1c4be83525cbc67534fdf8a0e609">add_url</a> ($images, $ignore_background=true, $ignore_interior_background=true)</td></tr>
+<tr class="memdesc:a87ef1c4be83525cbc67534fdf8a0e609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection via URLs.  <a href="#a87ef1c4be83525cbc67534fdf8a0e609">More...</a><br/></td></tr>
+<tr class="separator:a87ef1c4be83525cbc67534fdf8a0e609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae01a5915ba90a5de4b9a1b518a5c102"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#aae01a5915ba90a5de4b9a1b518a5c102">update_metadata</a> ($filepaths, $metadata)</td></tr>
 <tr class="memdesc:aae01a5915ba90a5de4b9a1b518a5c102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a metadata update for images already present in the collection.  <a href="#aae01a5915ba90a5de4b9a1b518a5c102">More...</a><br/></td></tr>
 <tr class="separator:aae01a5915ba90a5de4b9a1b518a5c102"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,7 +181,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Add images to the collection using data. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects.</li>
 <li><code>ignore_background</code>, if true, ignore the background region of the images. If false, include the background region of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore the background region's color in isolated parts of the images. If false, include the background color in those parts of the images.</li>
 </ul>
@@ -190,7 +193,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acf71b1fe04066e79c71437912507ca68"></a>
+<a class="anchor" id="a87ef1c4be83525cbc67534fdf8a0e609"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -204,7 +207,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>$ignore_background</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>$ignore_background</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$ignore_interior_background</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -217,7 +226,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Add images to the collection via URLs. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects.</li>
 <li><code>ignore_background</code>, if true, ignore the background region of the images. If false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore the background region's color in isolated parts of the images. If false, include the background color in those parts of the images.</li>
 </ul>
@@ -341,13 +350,10 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mark/misc-code/tineye-services-libs/tineyeservices_php-master/tineyeservices/metadata_request.php</li>
-</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 28 2013 13:16:55 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 28 2013 17:46:09 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

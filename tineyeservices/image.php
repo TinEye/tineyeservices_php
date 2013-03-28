@@ -4,9 +4,8 @@
 
 require_once 'tineye_service_request.php';
 
-///
 /// A class representing an image.
-///
+
 /// <pre>
 /// Image on filesystem:
 ///     >>> require_once 'image.php';
@@ -43,10 +42,10 @@ class Image
             if (!$fp)
                 throw new TinEyeServiceError('Could not open image file.');
             $this->data = stream_get_contents($fp);
-            if (!$this->data === false)
+            if ($this->data === false)
                 throw new TinEyeServiceError('Could not read image file.');
             fclose($fp);
-            $this->collection_filepath = $local_filepath
+            $this->collection_filepath = $local_filepath;
         }
 
         # If no local filepath but a URL is specified, use the basename of the URL

@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A class to send requests to a MulticolorEngine API.  
+<p><b>A user class to send requests to a MulticolorEngine API.</b>  
  <a href="classMulticolorEngineRequest.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MulticolorEngineRequest:</div>
@@ -96,8 +96,8 @@ Inheritance diagram for MulticolorEngineRequest:</div>
  <div class="center">
   <img src="classMulticolorEngineRequest.png" usemap="#MulticolorEngineRequest_map" alt=""/>
   <map id="MulticolorEngineRequest_map" name="MulticolorEngineRequest_map">
-<area href="classMetadataRequest.html" alt="MetadataRequest" shape="rect" coords="0,56,151,80"/>
-<area href="classTinEyeServiceRequest.html" alt="TinEyeServiceRequest" shape="rect" coords="0,0,151,24"/>
+<area href="classMetadataRequest.html" title="A base class to handle metadata-related requests to a TinEye Services API." alt="MetadataRequest" shape="rect" coords="0,56,151,80"/>
+<area href="classTinEyeServiceRequest.html" title="A base class to send requests to any TinEye Servies API." alt="TinEyeServiceRequest" shape="rect" coords="0,0,151,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -174,9 +174,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fdba78a4eccf31410c4ea3085bfa884 inherit pub_methods_classMetadataRequest"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#a2fdba78a4eccf31410c4ea3085bfa884">add_image</a> ($images, $ignore_background=true, $ignore_interior_background=true)</td></tr>
 <tr class="memdesc:a2fdba78a4eccf31410c4ea3085bfa884 inherit pub_methods_classMetadataRequest"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection using data.  <a href="#a2fdba78a4eccf31410c4ea3085bfa884">More...</a><br/></td></tr>
 <tr class="separator:a2fdba78a4eccf31410c4ea3085bfa884 inherit pub_methods_classMetadataRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf71b1fe04066e79c71437912507ca68 inherit pub_methods_classMetadataRequest"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#acf71b1fe04066e79c71437912507ca68">add_url</a> ($images, $ignore_background=true)</td></tr>
-<tr class="memdesc:acf71b1fe04066e79c71437912507ca68 inherit pub_methods_classMetadataRequest"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection via URLs.  <a href="#acf71b1fe04066e79c71437912507ca68">More...</a><br/></td></tr>
-<tr class="separator:acf71b1fe04066e79c71437912507ca68 inherit pub_methods_classMetadataRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ef1c4be83525cbc67534fdf8a0e609 inherit pub_methods_classMetadataRequest"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#a87ef1c4be83525cbc67534fdf8a0e609">add_url</a> ($images, $ignore_background=true, $ignore_interior_background=true)</td></tr>
+<tr class="memdesc:a87ef1c4be83525cbc67534fdf8a0e609 inherit pub_methods_classMetadataRequest"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images to the collection via URLs.  <a href="#a87ef1c4be83525cbc67534fdf8a0e609">More...</a><br/></td></tr>
+<tr class="separator:a87ef1c4be83525cbc67534fdf8a0e609 inherit pub_methods_classMetadataRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae01a5915ba90a5de4b9a1b518a5c102 inherit pub_methods_classMetadataRequest"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetadataRequest.html#aae01a5915ba90a5de4b9a1b518a5c102">update_metadata</a> ($filepaths, $metadata)</td></tr>
 <tr class="memdesc:aae01a5915ba90a5de4b9a1b518a5c102 inherit pub_methods_classMetadataRequest"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a metadata update for images already present in the collection.  <a href="#aae01a5915ba90a5de4b9a1b518a5c102">More...</a><br/></td></tr>
 <tr class="separator:aae01a5915ba90a5de4b9a1b518a5c102 inherit pub_methods_classMetadataRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,19 +214,19 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a602ecceb4175091ad16e27e073a5a2ce inherit pro_methods_classTinEyeServiceRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class to send requests to a MulticolorEngine API. </p>
+<div class="textblock"><p><b>A user class to send requests to a MulticolorEngine API.</b> </p>
 <pre>
 Adding an image using data:
     &gt;&gt;&gt; require_once 'image.php';
     &gt;&gt;&gt; require_once 'multicolorengine_request.php';
-    &gt;&gt;&gt; $api = new <a class="el" href="classMulticolorEngineRequest.html" title="A class to send requests to a MulticolorEngine API.">MulticolorEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
-    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html">Image</a>('/path/to/image.jpg');
+    &gt;&gt;&gt; $api = new <a class="el" href="classMulticolorEngineRequest.html" title="A user class to send requests to a MulticolorEngine API.">MulticolorEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
+    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html" title="A class representing an image.">Image</a>('/path/to/image.jpg');
     &gt;&gt;&gt; $api-&gt;add_image(array(image));
     {u'error': [], u'method': u'add', u'result': ][, u'status': u'ok'}</pre><pre>Searching for images using colors:
     &gt;&gt;&gt; $api-&gt;search_color(colors=array('255,255,235', '12FA3B');
     {'error': array(),
      'method': 'search',
-     'result': [{'filepath': 'path/to/file.jpg',
+     'result': [{'filepath': 'path/to/image.jpg',
                  'score': '13.00'}],
      'status': 'ok'}
 </pre> </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -449,7 +449,7 @@ Adding an image using data:
 <p>Generate a counter for each color from the palette. </p>
 <p>The palette specifies how many of the input images contain that color, given image upload data. Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects.</li>
+<li><code>images</code>, an array of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects built from local images, not URLs.</li>
 <li><code>count_colors</code>, a list of colors (palette) which you want to count. Can be RGB "255,255,255" or hex "ffffff" format.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
@@ -509,8 +509,8 @@ Adding an image using data:
 <p>The palette specifies how many of the input images contain that color, given image URLs.</p>
 <p>Arguments:</p>
 <ul>
-<li><code>urls</code>, a list of URL strings pointing to images.</li>
-<li><code>count_colors</code>, a list of colors (palette) which you want to count. Can be RGB "255,255,255" or hex "ffffff" format.</li>
+<li><code>urls</code>, an array of URL strings pointing to images.</li>
+<li><code>count_colors</code>, an array of colors (palette) which you want to count. Can be RGB "255,255,255" or hex "ffffff" format.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
 </ul>
@@ -518,7 +518,7 @@ Adding an image using data:
 <ul>
 <li><code>status</code>, a string, one of ok, warn, fail.</li>
 <li><code>error</code>, describes the error if status is not set to ok.</li>
-<li><p class="startli"><code>result</code>, a list of dictionaries, each representing a color.</p>
+<li><p class="startli"><code>result</code>, an array of dictionaries, each representing a color.</p>
 <ul>
 <li><code>color</code>, the color that was passed in.</li>
 <li><code>num_images_partial_area</code>, the number of images that partially matched the color.</li>
@@ -913,7 +913,7 @@ Adding an image using data:
 <p>Extract the dominant colors, given image upload data. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects with local file paths.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects with local file paths.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
 <li><code>limit</code>, maximum number of colors that should be returned.</li>
@@ -1253,7 +1253,7 @@ Adding an image using data:
 <p>Return any matches, with corresponding scores.</p>
 <p>Arguments:</p>
 <ul>
-<li><code>image</code>, an <a class="el" href="classImage.html">Image</a> object.</li>
+<li><code>image</code>, an <a class="el" href="classImage.html" title="A class representing an image.">Image</a> object.</li>
 <li><code>ignore_background</code>, if true, ignore the background color of the images, if false, include the background color of the images.</li>
 <li><code>ignore_interior_background</code>, if true, ignore regions that have the same color as the background region but that are surrounded by non-background regions.</li>
 <li><code>metadata</code>, metadata to be used for additional filtering.</li>
@@ -1444,13 +1444,10 @@ Adding an image using data:
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mark/misc-code/tineye-services-libs/tineyeservices_php-master/tineyeservices/multicolorengine_request.php</li>
-</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 28 2013 13:16:55 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 28 2013 17:46:09 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

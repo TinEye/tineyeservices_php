@@ -5,7 +5,7 @@
 require_once 'image.php';
 require_once 'tineye_service_request.php';
 
-/// A class to send requests to a MatchEngine API. 
+/// <b>A user class to send requests to a MatchEngine API.</b>
 
 /// <pre>
 /// Adding an image using data:
@@ -118,8 +118,6 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///
     function search_image($image, $min_score=0, $offset=0, $limit=10, $check_horizontal_flip=false)
     {
-        assert_is_array($images, "Image objects");
-
         $params = array('min_score'             => $min_score,
                         'offset'                => $offset,
                         'limit'                 => $limit,

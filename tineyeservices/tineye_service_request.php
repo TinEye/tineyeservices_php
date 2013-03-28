@@ -5,15 +5,24 @@
 require_once 'Requests.php';
 Requests::register_autoloader();
 
+/// \mainpage
+/// tineyeservices is a PHP client library for the MatchEngine, MobileEngine, and MulticolorEngine APIs. 
+/// 
+/// MatchEngine, MobileEngine, and MulticolorEngine are general image-matching engines 
+/// that allow you to perform large-scale image comparisons for a variety of tasks. 
+/// 
+/// See http://services.tineye.com/ for more information.
 ///
+
 /// The base class for all TinEye Services exceptions.
-///
 class TinEyeServiceException extends Exception
 {}
  
+/// A TinEye Services error.
 class TinEyeServiceError extends TinEyeServiceException
 {}
 
+/// A TinEye Services warning.
 class TinEyeServiceWarning extends TinEyeServiceException
 {}
 
@@ -33,9 +42,7 @@ function assert_is_array($item, $name)
         throw new TinEyeServiceError("Need to pass a list of $name");
 }
 
-///
 /// A base class to send requests to any TinEye Servies API.
-///
 class TinEyeServiceRequest
 {
     /// Construct an object to access a particular API.

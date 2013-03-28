@@ -5,7 +5,7 @@
 require_once 'image.php';
 require_once 'metadata_request.php';
 
-/// A class to send requests to a MulticolorEngine API. 
+/// <b>A user class to send requests to a MulticolorEngine API.</b>
 
 /// <pre>
 /// Adding an image using data:
@@ -20,7 +20,7 @@ require_once 'metadata_request.php';
 ///     >>> $api->search_color(colors=array('255,255,235', '12FA3B');
 ///     {'error': array(),
 ///      'method': 'search',
-///      'result': [{'filepath': 'path/to/file.jpg',
+///      'result': [{'filepath': 'path/to/image.jpg',
 ///                  'score': '13.00'}],
 ///      'status': 'ok'}
 /// </pre>
@@ -316,7 +316,7 @@ class MulticolorEngineRequest extends MetadataRequest
         foreach ($images as $image)
         {
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
-                throw new TinEyeServiceError('Need to pass a list of Image objects');
+                throw new TinEyeServiceError('Need to pass an array of Image objects');
 
             $file_params["images[$counter]"] = "@$image->local_filepath";
             $counter += 1;
@@ -367,7 +367,7 @@ class MulticolorEngineRequest extends MetadataRequest
     /// that color, given image upload data.
     
     /// Arguments:
-    /// - `images`, a list of Image objects.
+    /// - `images`, an array of Image objects built from local images, not URLs.
     /// - `count_colors`, a list of colors (palette) which you want to count.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
     /// - `ignore_background`, if true, ignore the background color of the images,
@@ -403,7 +403,7 @@ class MulticolorEngineRequest extends MetadataRequest
         foreach ($images as $image)
         {
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
-                throw new TinEyeServiceError('Need to pass a list of Image objects');
+                throw new TinEyeServiceError('Need to pass an array of Image objects');
 
             $file_params["images[$counter]"] = "@$image->local_filepath";
             $counter += 1;
@@ -418,8 +418,8 @@ class MulticolorEngineRequest extends MetadataRequest
     /// that color, given image URLs.
     ///
     /// Arguments:
-    /// - `urls`, a list of URL strings pointing to images.
-    /// - `count_colors`, a list of colors (palette) which you want to count.
+    /// - `urls`, an array of URL strings pointing to images.
+    /// - `count_colors`, an array of colors (palette) which you want to count.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
     /// - `ignore_background`, if true, ignore the background color of the images,
     ///    if false, include the background color of the images.
@@ -430,7 +430,7 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    an array containing
     /// - `status`, a string, one of ok, warn, fail.
     /// - `error`, describes the error if status is not set to ok.
-    /// - `result`, a list of dictionaries, each representing a color.
+    /// - `result`, an array of dictionaries, each representing a color.
     ///
     ///   + `color`, the color that was passed in.
     ///   + `num_images_partial_area`, the number of images that partially matched the color.

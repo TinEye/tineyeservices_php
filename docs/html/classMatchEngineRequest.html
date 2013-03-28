@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A class to send requests to a MatchEngine API.  
+<p><b>A user class to send requests to a MatchEngine API.</b>  
  <a href="classMatchEngineRequest.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MatchEngineRequest:</div>
@@ -96,8 +96,8 @@ Inheritance diagram for MatchEngineRequest:</div>
  <div class="center">
   <img src="classMatchEngineRequest.png" usemap="#MatchEngineRequest_map" alt=""/>
   <map id="MatchEngineRequest_map" name="MatchEngineRequest_map">
-<area href="classTinEyeServiceRequest.html" alt="TinEyeServiceRequest" shape="rect" coords="0,0,139,24"/>
-<area href="classMobileEngineRequest.html" title="A class to send requests to a MobileEngine API." alt="MobileEngineRequest" shape="rect" coords="0,112,139,136"/>
+<area href="classTinEyeServiceRequest.html" title="A base class to send requests to any TinEye Servies API." alt="TinEyeServiceRequest" shape="rect" coords="0,0,139,24"/>
+<area href="classMobileEngineRequest.html" title="A user class to send requests to a MobileEngine API." alt="MobileEngineRequest" shape="rect" coords="0,112,139,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -153,13 +153,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a602ecceb4175091ad16e27e073a5a2ce inherit pro_methods_classTinEyeServiceRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class to send requests to a MatchEngine API. </p>
+<div class="textblock"><p><b>A user class to send requests to a MatchEngine API.</b> </p>
 <pre>
 Adding an image using data:
     &gt;&gt;&gt; require_once 'image.php';
     &gt;&gt;&gt; require_once 'matchengine_request.php';
-    &gt;&gt;&gt; $api = new <a class="el" href="classMatchEngineRequest.html" title="A class to send requests to a MatchEngine API.">MatchEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
-    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html">Image</a>('/path/to/image.jpg');
+    &gt;&gt;&gt; $api = new <a class="el" href="classMatchEngineRequest.html" title="A user class to send requests to a MatchEngine API.">MatchEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
+    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html" title="A class representing an image.">Image</a>('/path/to/image.jpg');
     &gt;&gt;&gt; $api-&gt;add_image(array(image));
     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}</pre><pre>Searching for an image using an image URL:
     &gt;&gt;&gt; $api-&gt;search_url('<a href="http:///www.tineye.com/images/meloncat.jpg'">http:///www.tineye.com/images/meloncat.jpg'</a>);
@@ -187,7 +187,7 @@ Adding an image using data:
 <p>Add images to the collection using data. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects.</li>
 </ul>
 <p>Returned: an array containing</p>
 <ul>
@@ -214,7 +214,7 @@ Adding an image using data:
 <p>Add images to the collection via URLs. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>images</code>, a list of <a class="el" href="classImage.html">Image</a> objects.</li>
+<li><code>images</code>, a list of <a class="el" href="classImage.html" title="A class representing an image.">Image</a> objects.</li>
 </ul>
 <p>Returned: an array containing</p>
 <ul>
@@ -263,8 +263,8 @@ Adding an image using data:
 <p>Given two images, compare them and return the match score if there is a match. </p>
 <p>Arguments:</p>
 <ul>
-<li><code>image_1</code>, an <a class="el" href="classImage.html">Image</a> object representing the first image.</li>
-<li><code>image_2</code>, an <a class="el" href="classImage.html">Image</a> object representing the second image.</li>
+<li><code>image_1</code>, an <a class="el" href="classImage.html" title="A class representing an image.">Image</a> object representing the first image.</li>
+<li><code>image_2</code>, an <a class="el" href="classImage.html" title="A class representing an image.">Image</a> object representing the second image.</li>
 <li><code>min_score</code>, minimum score that should be returned.</li>
 <li><code>check_horizontal_flip</code>, whether to incorporate a horizontal flip check.</li>
 </ul>
@@ -455,7 +455,7 @@ Adding an image using data:
 <p>Return any matches, with corresponding scores.</p>
 <p>Arguments:</p>
 <ul>
-<li><code>image</code>, an <a class="el" href="classImage.html">Image</a> object.</li>
+<li><code>image</code>, an <a class="el" href="classImage.html" title="A class representing an image.">Image</a> object.</li>
 <li><code>min_score</code>, minimum score that should be returned.</li>
 <li><code>offset</code>, offset of results from the start.</li>
 <li><code>limit</code>, maximum number of matches that should be returned.</li>
@@ -543,13 +543,10 @@ Adding an image using data:
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mark/misc-code/tineye-services-libs/tineyeservices_php-master/tineyeservices/matchengine_request.php</li>
-</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 28 2013 13:16:55 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 28 2013 17:46:09 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

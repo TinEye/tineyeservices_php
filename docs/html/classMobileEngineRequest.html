@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A class to send requests to a MobileEngine API.  
+<p><b>A user class to send requests to a MobileEngine API.</b>  
  <a href="classMobileEngineRequest.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MobileEngineRequest:</div>
@@ -96,8 +96,8 @@ Inheritance diagram for MobileEngineRequest:</div>
  <div class="center">
   <img src="classMobileEngineRequest.png" usemap="#MobileEngineRequest_map" alt=""/>
   <map id="MobileEngineRequest_map" name="MobileEngineRequest_map">
-<area href="classMatchEngineRequest.html" title="A class to send requests to a MatchEngine API." alt="MatchEngineRequest" shape="rect" coords="0,56,139,80"/>
-<area href="classTinEyeServiceRequest.html" alt="TinEyeServiceRequest" shape="rect" coords="0,0,139,24"/>
+<area href="classMatchEngineRequest.html" title="A user class to send requests to a MatchEngine API." alt="MatchEngineRequest" shape="rect" coords="0,56,139,80"/>
+<area href="classTinEyeServiceRequest.html" title="A base class to send requests to any TinEye Servies API." alt="TinEyeServiceRequest" shape="rect" coords="0,0,139,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -158,13 +158,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a602ecceb4175091ad16e27e073a5a2ce inherit pro_methods_classTinEyeServiceRequest"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class to send requests to a MobileEngine API. </p>
+<div class="textblock"><p><b>A user class to send requests to a MobileEngine API.</b> </p>
 <pre>
 Adding an image using data:
     &gt;&gt;&gt; require_once 'image.php';
     &gt;&gt;&gt; require_once 'mobileengine_request.php';
-    &gt;&gt;&gt; $api = new <a class="el" href="classMobileEngineRequest.html" title="A class to send requests to a MobileEngine API.">MobileEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
-    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html">Image</a>('/path/to/image.jpg');
+    &gt;&gt;&gt; $api = new <a class="el" href="classMobileEngineRequest.html" title="A user class to send requests to a MobileEngine API.">MobileEngineRequest</a>('<a href="http://someengine.tineye.com/name/rest/'">http://someengine.tineye.com/name/rest/'</a>);
+    &gt;&gt;&gt; $image = new <a class="el" href="classImage.html" title="A class representing an image.">Image</a>('/path/to/image.jpg');
     &gt;&gt;&gt; $api-&gt;add_image(array(image));
     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}</pre><pre>Searching for an image using an image URL:
     &gt;&gt;&gt; $api-&gt;search_url('<a href="http:///www.tineye.com/images/meloncat.jpg'">http:///www.tineye.com/images/meloncat.jpg'</a>);
@@ -174,13 +174,10 @@ Adding an image using data:
                  'score': '97.2',
                  'overlay': 'overlay/query.png/match1.png[...]'}],
      'status': 'ok'}
-</pre> </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mark/misc-code/tineye-services-libs/tineyeservices_php-master/tineyeservices/mobileengine_request.php</li>
-</ul>
-</div><!-- contents -->
+</pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 28 2013 13:16:55 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 28 2013 17:46:09 for TinEye Services PHP Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
