@@ -104,11 +104,14 @@ class TinEyeServiceRequest
         $response_json = json_decode($response->body);
 
         # Handle API errors.
+        # doing it this way hides multiple errors, say from adding many images at once.
+        /*
         if ($response_json->status == 'fail')
             throw new TinEyeServiceError("{$response_json->error[0]}");
         elseif ($response_json->status == 'warn')
             throw new TinEyeServiceWarning("{$response_json->error[0]}");
-
+        */
+        
         return $response_json;
     }
 
