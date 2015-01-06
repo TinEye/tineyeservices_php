@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Requests.php';
+require_once 'Requests/library/Requests.php';
 Requests::register_autoloader();
 
 /// \mainpage
@@ -83,17 +83,21 @@ class TinEyeServiceRequest
         # set up basic authentication.
         $options = array();
         if (!is_null($this->username))
-            $options['auth'] = new Requests_Auth_Basic(array($this->username, $this->password));
+            $options['auth'] = array($this->username, $this->password);
 
         # construct the query URL.
         $url = $this->api_url . $method . '/';
 
         # if there are file parameters, send them in a POST body.
         # the empty array is extra headers.
-        if (is_null($file_params))
-            $response = Requests::get($url, array(), $params, $options);
-        else
+        if (is_null($file_params)) {
+            $query_string = http_build_query($params);
+            $get_url = $url . '?' . $query_string;
+            $response = Requests::get($get_url, array(), $options);
+        }
+        else {
             $response = Requests::post($url, array(), $file_params, $options);
+        }
 
         # Handle any HTTP errors.
         if ($response->status_code != 200)
