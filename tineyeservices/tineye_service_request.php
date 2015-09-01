@@ -57,9 +57,9 @@ class TinEyeServiceRequest
     ///
     function __construct($api_url, $username=NULL, $password=NULL)
     {
-        $this->api_url      = $api_url;
-        $this->username     = $username;
-        $this->password     = $password;
+        $this->api_url = $api_url;
+        $this->username = $username;
+        $this->password = $password;
     }
 
     /// Make an http request, return the response as an object.

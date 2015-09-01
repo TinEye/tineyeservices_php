@@ -58,30 +58,36 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `score`, relevance score.
     ///   + `filepath`, match image path.
     ///
-    function search_image($image, 
-                          $ignore_background          = True, 
-                          $ignore_interior_background = True,
-                          $metadata                   = '', 
-                          $return_metadata            = '', 
-                          $sort_metadata              = False, 
-                          $min_score                  =    0,
-                          $offset                     =    0, 
-                          $limit                      = 5000)
+    function search_image(
+        $image, 
+        $ignore_background=True, 
+        $ignore_interior_background=True,
+        $metadata='', 
+        $return_metadata='', 
+        $sort_metadata=False, 
+        $min_score=0,
+        $offset=0, 
+        $limit=5000)
     {
         if (!get_class($image) == 'Image')
             throw new TinEyeServiceError('Need to pass an Image object');
 
-        $params = array('ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'metadata'                   => $metadata,
-                        'return_metadata'            => $return_metadata,
-                        'sort_metadata'              => $sort_metadata,
-                        'min_score'                  => $min_score,
-                        'offset'                     => $offset,
-                        'limit'                      => $limit);
+        $params = array(
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'metadata' => $metadata,
+            'return_metadata' => $return_metadata,
+            'sort_metadata' => $sort_metadata,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit);
 
-        $file_params["image"]    = "@$image->local_filepath";
-        $file_params["filepath"] =   $image->collection_filepath;
+        if(function_exists('curl_file_create')) {
+            $file_params["image"] = curl_file_create($image->local_filepath);
+        } else {
+            $file_params["image"] = "@{$image->local_filepath}";
+        }
+        $file_params["filepath"] = $image->collection_filepath;
 
         return $this->request('color_search', $params, $file_params);
     }
@@ -112,25 +118,27 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `score`, relevance score.
     ///   + `filepath`, match image path.
     ///
-    function search_filepath($filepath, 
-                             $ignore_background          = True, 
-                             $ignore_interior_background = True,
-                             $metadata                   = '', 
-                             $return_metadata            = '', 
-                             $sort_metadata              = False, 
-                             $min_score                  = 0,
-                             $offset                     = 0, 
-                             $limit                      = 5000)
+    function search_filepath(
+        $filepath, 
+        $ignore_background=True, 
+        $ignore_interior_background=True,
+        $metadata='', 
+        $return_metadata='', 
+        $sort_metadata=False, 
+        $min_score=0,
+        $offset=0, 
+        $limit=5000)
     {
-        $params = array('filepath'                   => $filepath,
-                        'ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'metadata'                   => $metadata,
-                        'return_metadata'            => $return_metadata,
-                        'sort_metadata'              => $sort_metadata,
-                        'min_score'                  => $min_score,
-                        'offset'                     => $offset,
-                        'limit'                      => $limit);
+        $params = array(
+            'filepath' => $filepath,
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'metadata' => $metadata,
+            'return_metadata' => $return_metadata,
+            'sort_metadata' => $sort_metadata,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit);
                   
         return $this->request('color_search', $params);
     }
@@ -161,25 +169,27 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `score`, relevance score.
     ///   + `filepath`, match image path.
     ///
-    function search_url($url, 
-                        $ignore_background          = True, 
-                        $ignore_interior_background = True,
-                        $metadata                   = '', 
-                        $return_metadata            = '', 
-                        $sort_metadata              = False, 
-                        $min_score                  = 0, 
-                        $offset                     = 0, 
-                        $limit                      = 5000)
+    function search_url(
+        $url, 
+        $ignore_background=True, 
+        $ignore_interior_background=True,
+        $metadata='', 
+        $return_metadata='', 
+        $sort_metadata=False, 
+        $min_score=0, 
+        $offset=0, 
+        $limit=5000)
     {
-        $params = array('url' => $url,
-                        'ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'metadata'                   => $metadata,
-                        'return_metadata'            => $return_metadata,
-                        'sort_metadata'              => $sort_metadata,
-                        'min_score'                  => $min_score,
-                        'offset'                     => $offset,
-                        'limit'                      => $limit);
+        $params = array(
+            'url' => $url,
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'metadata' => $metadata,
+            'return_metadata' => $return_metadata,
+            'sort_metadata' => $sort_metadata,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit);
 
         return $this->request('color_search', $params);
     }
@@ -211,30 +221,32 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `score`, relevance score.
     ///   + `filepath`, match image path.
     ///
-    function search_color($colors, 
-                          $weights                    = array(), 
-                          $ignore_background          = True,
-                          $ignore_interior_background = True, 
-                          $metadata                   = '',
-                          $return_metadata            = '', 
-                          $sort_metadata              = False, 
-                          $min_score                  =    0, 
-                          $offset                     =    0, 
-                          $limit                      = 5000)
+    function search_color(
+        $colors, 
+        $weights=array(), 
+        $ignore_background=True,
+        $ignore_interior_background=True, 
+        $metadata='',
+        $return_metadata='', 
+        $sort_metadata=False, 
+        $min_score=0, 
+        $offset=0, 
+        $limit=5000)
     {
-        $params = array('ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'metadata'                   => $metadata,
-                        'return_metadata'            => $return_metadata,
-                        'sort_metadata'              => $sort_metadata,
-                        'min_score'                  => $min_score,
-                        'offset'                     => $offset,
-                        'limit'                      => $limit);
+        $params = array(
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'metadata' => $metadata,
+            'return_metadata' => $return_metadata,
+            'sort_metadata' => $sort_metadata,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit);
 
-        assert_is_array($colors,  "colors");
+        assert_is_array($colors, "colors");
         assert_is_array($weights, "weights");
 
-        fill_array_params($params, $colors,  "colors");
+        fill_array_params($params, $colors, "colors");
         fill_array_params($params, $weights, "weights");
 
         return $this->request('color_search', $params);
@@ -261,19 +273,21 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `score`, relevance score.
     ///   + `filepath`, match image path.
     ///
-    function search_metadata($metadata, 
-                             $return_metadata = '', 
-                             $sort_metadata   = False,
-                             $min_score       =    0, 
-                             $offset          =    0, 
-                             $limit           = 5000)
+    function search_metadata(
+        $metadata, 
+        $return_metadata='', 
+        $sort_metadata=False,
+        $min_score=0, 
+        $offset=0, 
+        $limit=5000)
     {
-        $params = array('metadata'        => $metadata,
-                        'return_metadata' => $return_metadata,
-                        'sort_metadata'   => $sort_metadata,
-                        'min_score'       => $min_score,
-                        'offset'          => $offset,
-                        'limit'           => $limit);
+        $params = array(
+            'metadata' => $metadata,
+            'return_metadata' => $return_metadata,
+            'sort_metadata' => $sort_metadata,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit);
 
         return $this->request('color_search', $params);
     }
@@ -297,18 +311,20 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_image_colors_image($images, 
-                                        $ignore_background          = True, 
-                                        $ignore_interior_background = True, 
-                                        $limit                      = 32,
-                                        $color_format               = 'rgb')
+    function extract_image_colors_image(
+        $images, 
+        $ignore_background=True, 
+        $ignore_interior_background=True, 
+        $limit=32,
+        $color_format='rgb')
     {
         assert_is_array($images, "Image objects");
 
-        $params = array('limit'                      => $limit,
-                        'ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'color_format'               => $color_format);
+        $params = array(
+            'limit' => $limit,
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'color_format' => $color_format);
         $file_params = array();
         $counter = 0;
 
@@ -317,7 +333,11 @@ class MulticolorEngineRequest extends MetadataRequest
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
                 throw new TinEyeServiceError('Need to pass an array of Image objects');
 
-            $file_params["images[$counter]"] = "@$image->local_filepath";
+            if(function_exists('curl_file_create')) {
+                $file_params["images[$counter]"] = curl_file_create($image->local_filepath);
+            } else {
+                $file_params["images[$counter]"] = "@{$image->local_filepath}";
+            }
             $counter += 1;
         }
 
@@ -342,18 +362,20 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_image_colors_url($urls, 
-                                      $ignore_background          = True, 
-                                      $ignore_interior_background = True, 
-                                      $limit                      = 32, 
-                                      $color_format               = 'rgb')
+    function extract_image_colors_url(
+        $urls, 
+        $ignore_background=True, 
+        $ignore_interior_background=True, 
+        $limit=32, 
+        $color_format='rgb')
     {
         assert_is_array($urls, "URL strings");
 
-        $params = array('limit'                      => $limit,
-                        'ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background,
-                        'color_format'               => $color_format);
+        $params = array(
+            'limit' => $limit,
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background,
+            'color_format' => $color_format);
         
         fill_array_params($params, $urls, "urls");
 
@@ -384,16 +406,18 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_partial_area`, the number of images that partially matched the color.
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
-    function count_image_colors_image($images, 
-                                      $count_colors, 
-                                      $ignore_background          = True,
-                                      $ignore_interior_background = True)
+    function count_image_colors_image(
+        $images, 
+        $count_colors, 
+        $ignore_background=True,
+        $ignore_interior_background=True)
     {
-        assert_is_array($images,       "Image objects");
+        assert_is_array($images, "Image objects");
         assert_is_array($count_colors, "count_colors");
 
-        $params = array('ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background);
+        $params = array(
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background);
         $file_params = array();
 
         fill_array_params($file_params, $count_colors, "count_colors");
@@ -404,7 +428,11 @@ class MulticolorEngineRequest extends MetadataRequest
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
                 throw new TinEyeServiceError('Need to pass an array of Image objects');
 
-            $file_params["images[$counter]"] = "@$image->local_filepath";
+            if(function_exists('curl_file_create')) {
+                $file_params["images[$counter]"] = curl_file_create($image->local_filepath);
+            } else {
+                $file_params["images[$counter]"] = "@{$image->local_filepath}";
+            }
             $counter += 1;
         }
 
@@ -435,17 +463,19 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_partial_area`, the number of images that partially matched the color.
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
-    function count_image_colors_url($urls,
-                                    $count_colors, 
-                                    $ignore_background          = True,
-                                    $ignore_interior_background = True)
+    function count_image_colors_url(
+        $urls,
+        $count_colors, 
+        $ignore_background=True,
+        $ignore_interior_background=True)
     {
-        assert_is_array($urls,         "URL strings");
+        assert_is_array($urls, "URL strings");
         assert_is_array($count_colors, "count_colors");
         
-        $params = array('ignore_background'          => $ignore_background,
-                        'ignore_interior_background' => $ignore_interior_background);
-        fill_array_params($params, $urls,         "urls");
+        $params = array(
+            'ignore_background' => $ignore_background,
+            'ignore_interior_background' => $ignore_interior_background);
+        fill_array_params($params, $urls, "urls");
         fill_array_params($params, $count_colors, "count_colors");
 
         return $this->request('count_image_colors', $params);
@@ -464,11 +494,11 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_collection_colors($limit        =  32, 
-                                       $color_format = 'rgb')
+    function extract_collection_colors($limit=32, $color_format='rgb')
     {
-        $params = array('limit'        => $limit,
-                        'color_format' => $color_format);
+        $params = array(
+            'limit' => $limit,
+            'color_format' => $color_format);
 
         return $this->request('extract_collection_colors', $params);
     }
@@ -489,13 +519,15 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_collection_colors_metadata($metadata, 
-                                                $limit        =  32, 
-                                                $color_format = 'rgb')
+    function extract_collection_colors_metadata(
+        $metadata, 
+        $limit=32, 
+        $color_format='rgb')
     {
-        $params = array('metadata'     => $metadata,
-                        'limit'        => $limit,
-                        'color_format' => $color_format);
+        $params = array(
+            'metadata' => $metadata,
+            'limit' => $limit,
+            'color_format' => $color_format);
 
         return $this->request('extract_collection_colors', $params);
     }
@@ -518,17 +550,19 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_collection_colors_colors($colors, 
-                                              $weights      =  array(), 
-                                              $limit        =  32, 
-                                              $color_format = 'rgb')
+    function extract_collection_colors_colors(
+        $colors, 
+        $weights=array(), 
+        $limit=32, 
+        $color_format='rgb')
     {
-        assert_is_array($colors,  "colors");
+        assert_is_array($colors, "colors");
         assert_is_array($weights, "weights");
 
-        $params = array('limit'        => $limit,
-                        'color_format' => $color_format);
-        fill_array_params($params, $colors,  "colors");
+        $params = array(
+            'limit' => $limit,
+            'color_format' => $color_format);
+        fill_array_params($params, $colors, "colors");
         fill_array_params($params, $weights, "weights");
 
         return $this->request('extract_collection_colors', $params);
@@ -550,14 +584,16 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `result`, a list of dictionaries, each representing a color with
     ///    associated ranking and weight.
     ///
-    function extract_collection_colors_filepath($filepaths, 
-                                                $limit        =  32, 
-                                                $color_format = 'rgb')
+    function extract_collection_colors_filepath(
+        $filepaths, 
+        $limit=32, 
+        $color_format='rgb')
     {
         assert_is_array($filepaths, "filepaths");
 
-        $params = array('limit'        => $limit,
-                        'color_format' => $color_format);
+        $params = array(
+            'limit' => $limit,
+            'color_format' => $color_format);
         fill_array_params($params, $filepaths, "filepaths");
 
         return $this->request('extract_collection_colors', $params);
@@ -611,8 +647,7 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_partial_area`, the number of images that partially matched the color.
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
-    function count_collection_colors_metadata($metadata, 
-                                              $count_colors)
+    function count_collection_colors_metadata($metadata, $count_colors)
     {
         assert_is_array($count_colors, "count_colors");
 
@@ -644,17 +679,15 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_partial_area`, the number of images that partially matched the color.
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
-    function count_collection_colors_colors($colors, 
-                                            $count_colors, 
-                                            $weights = array())
+    function count_collection_colors_colors($colors, $count_colors, $weights=array())
     {
-        assert_is_array($colors,       "colors");
-        assert_is_array($weights,      "weights");
+        assert_is_array($colors, "colors");
+        assert_is_array($weights, "weights");
         assert_is_array($count_colors, "count_colors");
 
         $params = array();
-        fill_array_params($params, $colors,       "colors");
-        fill_array_params($params, $weights,      "weights");
+        fill_array_params($params, $colors, "colors");
+        fill_array_params($params, $weights, "weights");
         fill_array_params($params, $count_colors, "count_colors");
  
         return $this->request('count_collection_colors', $params);
@@ -681,14 +714,13 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_partial_area`, the number of images that partially matched the color.
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
-    function count_collection_colors_filepath($filepaths, 
-                                              $count_colors)
+    function count_collection_colors_filepath($filepaths, $count_colors)
     {
-        assert_is_array($filepaths,    "filepaths");
+        assert_is_array($filepaths, "filepaths");
         assert_is_array($count_colors, "count_colors");
 
         $params = array();
-        fill_array_params($params, $filepaths,    "filepaths");
+        fill_array_params($params, $filepaths, "filepaths");
         fill_array_params($params, $count_colors, "count_colors");
 
         return $this->request('count_collection_colors', $params);
@@ -708,10 +740,8 @@ class MulticolorEngineRequest extends MetadataRequest
     function count_metadata($count_metadata)
     {
         assert_is_array($count_metadata, "count_metadata");
-        
         $params = array();
         fill_array_params($params, $count_metadata, "count_metadata");
-
         return $this->request('count_metadata', $params);
     }
 
@@ -727,15 +757,11 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `error`, describes the error if status is not set to ok.
     /// - `result`, the counts associated with the given metadata.
     ///
-    function count_metadata_metadata($metadata, 
-                                     $count_metadata)
+    function count_metadata_metadata($metadata, $count_metadata)
     {
         assert_is_array($count_metadata, "count_metadata");
-
         $params = array('metadata' => $metadata);
-
         fill_array_params($params, $count_metadata, "count_metadata");
-
         return $this->request('count_metadata', $params);
     }
 
@@ -753,17 +779,15 @@ class MulticolorEngineRequest extends MetadataRequest
     /// - `error`, describes the error if status is not set to ok.
     /// - `result`, the counts associated with the given metadata.
     ///
-    function count_metadata_colors($colors, 
-                                   $count_metadata, 
-                                   $weights = array())
+    function count_metadata_colors($colors, $count_metadata, $weights = array())
     {
-        assert_is_array($colors,         "colors");
-        assert_is_array($weights,        "weights");
+        assert_is_array($colors, "colors");
+        assert_is_array($weights, "weights");
         assert_is_array($count_metadata, "count_metadata");
 
         $params = array();
-        fill_array_params($params, $colors,         "colors");
-        fill_array_params($params, $weights,        "weights");
+        fill_array_params($params, $colors, "colors");
+        fill_array_params($params, $weights, "weights");
         fill_array_params($params, $count_metadata, "count_metadata");
 
         return $this->request('count_metadata', $params);
@@ -784,11 +808,11 @@ class MulticolorEngineRequest extends MetadataRequest
     ///
     function count_metadata_filepath($filepaths, $count_metadata)
     {
-        assert_is_array($filepaths,      "filepaths");
+        assert_is_array($filepaths, "filepaths");
         assert_is_array($count_metadata, "count_metadata");
 
         $params = array();
-        fill_array_params($params, $filepaths,      "filepaths");
+        fill_array_params($params, $filepaths, "filepaths");
         fill_array_params($params, $count_metadata, "count_metadata");
 
         return $this->request('count_metadata', $params);

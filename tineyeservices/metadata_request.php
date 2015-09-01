@@ -38,7 +38,11 @@ class MetadataRequest extends TinEyeServiceRequest
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
                 throw new TinEyeServiceError('Need to pass a list of Image objects');
 
-            $file_params["images[$counter]"] = "@{$image->local_filepath}";
+            if(function_exists('curl_file_create')) {
+                $file_params["images[$counter]"] = curl_file_create($image->local_filepath);
+            } else {
+                $file_params["images[$counter]"] = "@{$image->local_filepath}";
+            }
             $file_params["filepaths[$counter]"] = $image->collection_filepath;
             if (!is_null($image->metadata))
                 $file_params["metadata[$counter]"] = $image->metadata;

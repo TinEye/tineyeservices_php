@@ -56,7 +56,11 @@ class MatchEngineRequest extends TinEyeServiceRequest
             if (!gettype($image) == 'object' || !get_class($image) == 'Image')
                 throw new TinEyeServiceError('Need to pass a list of Image objects');
 
-            $file_params["images[$counter]"] = "@$image->local_filepath";
+            if(function_exists('curl_file_create')) {
+                $file_params["images[$counter]"] = curl_file_create($image->local_filepath);
+            } else {
+                $file_params["images[$counter]"] = "@{$image->local_filepath}";
+            }
             $file_params["filepaths[$counter]"] = $image->collection_filepath;
             $counter += 1;
         }
@@ -117,13 +121,18 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///
     function search_image($image, $min_score=0, $offset=0, $limit=10, $check_horizontal_flip=false)
     {
-        $params = array('min_score'             => $min_score,
-                        'offset'                => $offset,
-                        'limit'                 => $limit,
-                        'check_horizontal_flip' => $check_horizontal_flip);
-
-        $file_params["image"]    = "@{$image->local_filepath}";
-        $file_params["filepath"] =    $image->collection_filepath;
+        $params = array(
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit,
+            'check_horizontal_flip' => $check_horizontal_flip);
+        
+        if(function_exists('curl_file_create')) {
+            $file_params["image"] = curl_file_create($image->local_filepath);
+        } else {
+            $file_params["image"] = "@{$image->local_filepath}";
+        }
+        $file_params["filepath"] = $image->collection_filepath;
 
         return $this->request('search', $params, $file_params);
     }
@@ -150,14 +159,15 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///   + `overlay`, URL pointing to overlay image.
     ///   + `filepath`, match image path.
     ///
-    function search_filepath($filepath, $min_score=0, $offset=0, $limit=10,
-                             $check_horizontal_flip=false)
+    function search_filepath(
+        $filepath, $min_score=0, $offset=0, $limit=10, $check_horizontal_flip=false)
     {
-        $params = array('filepath'              => $filepath,
-                        'min_score'             => $min_score,
-                        'offset'                => $offset,
-                        'limit'                 => $limit,
-                        'check_horizontal_flip' => $check_horizontal_flip);
+        $params = array(
+            'filepath' => $filepath,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit,
+            'check_horizontal_flip' => $check_horizontal_flip);
 
         return $this->request('search', $params);
     }
@@ -183,14 +193,15 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///   + `overlay`, URL pointing to overlay image.
     ///   + `filepath`, match image path.
     ///
-    function search_url($url, $min_score=0, $offset=0, $limit=10,
-                        $check_horizontal_flip=false)
+    function search_url(
+        $url, $min_score=0, $offset=0, $limit=10, $check_horizontal_flip=false)
     {
-        $params = array('url'                   => $url,
-                        'min_score'             => $min_score,
-                        'offset'                => $offset,
-                        'limit'                 => $limit,
-                        'check_horizontal_flip' => $check_horizontal_flip);
+        $params = array(
+            'url' => $url,
+            'min_score' => $min_score,
+            'offset' => $offset,
+            'limit' => $limit,
+            'check_horizontal_flip' => $check_horizontal_flip);
 
         return $this->request('search', $params);
     }
@@ -214,11 +225,17 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///
     function compare_image($image_1, $image_2, $min_score=0, $check_horizontal_flip=false)
     {
-        $params = array('min_score'             => $min_score,
-                        'check_horizontal_flip' => $check_horizontal_flip);
+        $params = array(
+            'min_score' => $min_score,
+            'check_horizontal_flip' => $check_horizontal_flip);
 
-        $file_params["image1"] = "@{$image_1->local_filepath}";
-        $file_params["image2"] = "@{$image_2->local_filepath}";
+        if(function_exists('curl_file_create')) {
+            $file_params["image1"] = curl_file_create($image_1->local_filepath);
+            $file_params["image2"] = curl_file_create($image_2->local_filepath);
+        } else {
+            $file_params["image1"] = "@{$image_1->local_filepath}";
+            $file_params["image2"] = "@{$image_2->local_filepath}";
+        }
 
         return $this->request('compare', $params, $file_params);
     }
@@ -244,10 +261,11 @@ class MatchEngineRequest extends TinEyeServiceRequest
     ///
     function compare_url($url_1, $url_2, $min_score=0, $check_horizontal_flip=false)
     {
-        $params = array('url1'                  => $url_1,
-                        'url2'                  => $url_2,
-                        'min_score'             => $min_score,
-                        'check_horizontal_flip' => $check_horizontal_flip);
+        $params = array(
+            'url1' => $url_1,
+            'url2' => $url_2,
+            'min_score' => $min_score,
+            'check_horizontal_flip' => $check_horizontal_flip);
 
         return $this->request('compare', $params);
     }
