@@ -87,7 +87,6 @@ class MulticolorEngineRequest extends MetadataRequest
         } else {
             $file_params["image"] = "@{$image->local_filepath}";
         }
-        $file_params["filepath"] = $image->collection_filepath;
 
         return $this->request('color_search', $params, $file_params);
     }

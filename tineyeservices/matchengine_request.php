@@ -132,7 +132,6 @@ class MatchEngineRequest extends TinEyeServiceRequest
         } else {
             $file_params["image"] = "@{$image->local_filepath}";
         }
-        $file_params["filepath"] = $image->collection_filepath;
 
         return $this->request('search', $params, $file_params);
     }
