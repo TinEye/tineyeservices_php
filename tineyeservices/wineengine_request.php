@@ -8,7 +8,7 @@ require_once 'matchengine_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'wineengine_request.php';
-///     >>> $api = new WineEngineRequest('http://someengine.tineye.com/name/rest/');
+///     >>> $api = new WineEngineRequest('http://wineengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}

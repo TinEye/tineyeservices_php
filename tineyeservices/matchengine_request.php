@@ -9,7 +9,7 @@ require_once 'tineye_service_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'matchengine_request.php';
-///     >>> $api = new MatchEngineRequest('http://someengine.tineye.com/name/rest/');
+///     >>> $api = new MatchEngineRequest('http://matchengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}
@@ -34,7 +34,7 @@ class MatchEngineRequest extends TinEyeServiceRequest
     }
 
     /// Add images to the collection using data.
-    
+
     /// Arguments:
     /// - `images`, a list of Image objects.
     ///
@@ -69,7 +69,7 @@ class MatchEngineRequest extends TinEyeServiceRequest
     }
 
     /// Add images to the collection via URLs.
-    
+
     /// Arguments:
     /// - `images`, a list of Image objects.
     ///
@@ -126,7 +126,7 @@ class MatchEngineRequest extends TinEyeServiceRequest
             'offset' => $offset,
             'limit' => $limit,
             'check_horizontal_flip' => $check_horizontal_flip);
-        
+
         if(function_exists('curl_file_create')) {
             $file_params["image"] = curl_file_create($image->local_filepath);
         } else {
@@ -170,9 +170,9 @@ class MatchEngineRequest extends TinEyeServiceRequest
 
         return $this->request('search', $params);
     }
-        
-    /// Search against the collection using an image URL. 
- 
+
+    /// Search against the collection using an image URL.
+
     /// Return any matches, with corresponding scores.
     ///
     /// Arguments:
@@ -204,9 +204,9 @@ class MatchEngineRequest extends TinEyeServiceRequest
 
         return $this->request('search', $params);
     }
-        
+
     /// Given two images, compare them and return the match score if there is a match.
-    
+
     /// Arguments:
     /// - `image_1`, an Image object representing the first image.
     /// - `image_2`, an Image object representing the second image.
@@ -238,9 +238,9 @@ class MatchEngineRequest extends TinEyeServiceRequest
 
         return $this->request('compare', $params, $file_params);
     }
-        
+
     /// Given two images, compare them and return the match score if there is a match.
-    
+
     /// Arguments:
     /// - `url_1`, a URL string pointing to the first image.
     /// - `url_2`, a URL string pointing to the second image.

@@ -9,7 +9,7 @@ require_once 'metadata_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'multicolorengine_request.php';
-///     >>> $api = new MulticolorEngineRequest('http://someengine.tineye.com/name/rest/');
+///     >>> $api = new MulticolorEngineRequest('http://multicolorengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': ][, u'status': u'ok'}
@@ -59,14 +59,14 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `filepath`, match image path.
     ///
     function search_image(
-        $image, 
-        $ignore_background=True, 
+        $image,
+        $ignore_background=True,
         $ignore_interior_background=True,
-        $metadata='', 
-        $return_metadata='', 
-        $sort_metadata=False, 
+        $metadata='',
+        $return_metadata='',
+        $sort_metadata=False,
         $min_score=0,
-        $offset=0, 
+        $offset=0,
         $limit=5000)
     {
         if (!get_class($image) == 'Image')
@@ -92,7 +92,7 @@ class MulticolorEngineRequest extends MetadataRequest
     }
 
     /// Do a color search against the collection using an image already in the collection.
-    
+
     /// Return any matches, with corresponding scores.
     ///
     /// Arguments:
@@ -118,14 +118,14 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `filepath`, match image path.
     ///
     function search_filepath(
-        $filepath, 
-        $ignore_background=True, 
+        $filepath,
+        $ignore_background=True,
         $ignore_interior_background=True,
-        $metadata='', 
-        $return_metadata='', 
-        $sort_metadata=False, 
+        $metadata='',
+        $return_metadata='',
+        $sort_metadata=False,
         $min_score=0,
-        $offset=0, 
+        $offset=0,
         $limit=5000)
     {
         $params = array(
@@ -138,11 +138,11 @@ class MulticolorEngineRequest extends MetadataRequest
             'min_score' => $min_score,
             'offset' => $offset,
             'limit' => $limit);
-                  
+
         return $this->request('color_search', $params);
     }
 
-    /// Do a color search against the collection using an image URL. 
+    /// Do a color search against the collection using an image URL.
 
     /// Return any matches, with corresponding scores.
     ///
@@ -169,14 +169,14 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `filepath`, match image path.
     ///
     function search_url(
-        $url, 
-        $ignore_background=True, 
+        $url,
+        $ignore_background=True,
         $ignore_interior_background=True,
-        $metadata='', 
-        $return_metadata='', 
-        $sort_metadata=False, 
-        $min_score=0, 
-        $offset=0, 
+        $metadata='',
+        $return_metadata='',
+        $sort_metadata=False,
+        $min_score=0,
+        $offset=0,
         $limit=5000)
     {
         $params = array(
@@ -192,9 +192,9 @@ class MulticolorEngineRequest extends MetadataRequest
 
         return $this->request('color_search', $params);
     }
-        
+
     /// Do a color search against the collection using specified colors.
-    
+
     /// Return any matches, with corresponding scores.
     ///
     /// Arguments:
@@ -221,15 +221,15 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `filepath`, match image path.
     ///
     function search_color(
-        $colors, 
-        $weights=array(), 
+        $colors,
+        $weights=array(),
         $ignore_background=True,
-        $ignore_interior_background=True, 
+        $ignore_interior_background=True,
         $metadata='',
-        $return_metadata='', 
-        $sort_metadata=False, 
-        $min_score=0, 
-        $offset=0, 
+        $return_metadata='',
+        $sort_metadata=False,
+        $min_score=0,
+        $offset=0,
         $limit=5000)
     {
         $params = array(
@@ -273,11 +273,11 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `filepath`, match image path.
     ///
     function search_metadata(
-        $metadata, 
-        $return_metadata='', 
+        $metadata,
+        $return_metadata='',
         $sort_metadata=False,
-        $min_score=0, 
-        $offset=0, 
+        $min_score=0,
+        $offset=0,
         $limit=5000)
     {
         $params = array(
@@ -292,7 +292,7 @@ class MulticolorEngineRequest extends MetadataRequest
     }
 
     /// Extract the dominant colors, given image upload data.
-    
+
     /// Arguments:
     /// - `images`, a list of Image objects with local file paths.
     /// - `ignore_background`, if true, ignore the background color of the images,
@@ -311,9 +311,9 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    associated ranking and weight.
     ///
     function extract_image_colors_image(
-        $images, 
-        $ignore_background=True, 
-        $ignore_interior_background=True, 
+        $images,
+        $ignore_background=True,
+        $ignore_interior_background=True,
         $limit=32,
         $color_format='rgb')
     {
@@ -342,9 +342,9 @@ class MulticolorEngineRequest extends MetadataRequest
 
         return $this->request('extract_image_colors', $params, $file_params);
     }
-        
+
     /// Extract the dominant colors, given image URLs.
-    
+
     /// Arguments:
     /// - `urls`, a list of URL strings pointing to images.
     /// - `ignore_background`, if true, ignore the background color of the images,
@@ -362,10 +362,10 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    associated ranking and weight.
     ///
     function extract_image_colors_url(
-        $urls, 
-        $ignore_background=True, 
-        $ignore_interior_background=True, 
-        $limit=32, 
+        $urls,
+        $ignore_background=True,
+        $ignore_interior_background=True,
+        $limit=32,
         $color_format='rgb')
     {
         assert_is_array($urls, "URL strings");
@@ -375,7 +375,7 @@ class MulticolorEngineRequest extends MetadataRequest
             'ignore_background' => $ignore_background,
             'ignore_interior_background' => $ignore_interior_background,
             'color_format' => $color_format);
-        
+
         fill_array_params($params, $urls, "urls");
 
         return $this->request('extract_image_colors', $params);
@@ -385,7 +385,7 @@ class MulticolorEngineRequest extends MetadataRequest
 
     /// The palette specifies how many of the input images contain
     /// that color, given image upload data.
-    
+
     /// Arguments:
     /// - `images`, an array of Image objects built from local images, not URLs.
     /// - `count_colors`, a list of colors (palette) which you want to count.
@@ -406,8 +406,8 @@ class MulticolorEngineRequest extends MetadataRequest
     ///   + `num_images_full_area`, the number of images that fully matched the color.
     ///
     function count_image_colors_image(
-        $images, 
-        $count_colors, 
+        $images,
+        $count_colors,
         $ignore_background=True,
         $ignore_interior_background=True)
     {
@@ -464,13 +464,13 @@ class MulticolorEngineRequest extends MetadataRequest
     ///
     function count_image_colors_url(
         $urls,
-        $count_colors, 
+        $count_colors,
         $ignore_background=True,
         $ignore_interior_background=True)
     {
         assert_is_array($urls, "URL strings");
         assert_is_array($count_colors, "count_colors");
-        
+
         $params = array(
             'ignore_background' => $ignore_background,
             'ignore_interior_background' => $ignore_interior_background);
@@ -481,7 +481,7 @@ class MulticolorEngineRequest extends MetadataRequest
     }
 
     /// Extract the dominant colors of your collection.
-    
+
     /// Arguments:
     /// - `limit`, maximum number of colors that should be returned.
     /// - `color_format`, return RGB or hex formatted colors, can be either 'rgb' or 'hex'.
@@ -519,8 +519,8 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    associated ranking and weight.
     ///
     function extract_collection_colors_metadata(
-        $metadata, 
-        $limit=32, 
+        $metadata,
+        $limit=32,
         $color_format='rgb')
     {
         $params = array(
@@ -536,7 +536,7 @@ class MulticolorEngineRequest extends MetadataRequest
     /// The set is chosen from the collection using colors.
     ///
     /// Arguments:
-    /// - `colors`, a list of colors to be used for image filtering. 
+    /// - `colors`, a list of colors to be used for image filtering.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
     /// - `weights`, a list of weights to be used with the colors.
     /// - `limit`, maximum number of colors that should be returned.
@@ -550,9 +550,9 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    associated ranking and weight.
     ///
     function extract_collection_colors_colors(
-        $colors, 
-        $weights=array(), 
-        $limit=32, 
+        $colors,
+        $weights=array(),
+        $limit=32,
         $color_format='rgb')
     {
         assert_is_array($colors, "colors");
@@ -584,8 +584,8 @@ class MulticolorEngineRequest extends MetadataRequest
     ///    associated ranking and weight.
     ///
     function extract_collection_colors_filepath(
-        $filepaths, 
-        $limit=32, 
+        $filepaths,
+        $limit=32,
         $color_format='rgb')
     {
         assert_is_array($filepaths, "filepaths");
@@ -662,7 +662,7 @@ class MulticolorEngineRequest extends MetadataRequest
     /// given a list of colors and weights to filter the collection.
     ///
     /// Arguments:
-    /// - `colors`, a list of colors to be used for image filtering. 
+    /// - `colors`, a list of colors to be used for image filtering.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
     /// - `count_colors`, a list of colors which you want to count.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
@@ -688,7 +688,7 @@ class MulticolorEngineRequest extends MetadataRequest
         fill_array_params($params, $colors, "colors");
         fill_array_params($params, $weights, "weights");
         fill_array_params($params, $count_colors, "count_colors");
- 
+
         return $this->request('count_collection_colors', $params);
     }
 
@@ -726,7 +726,7 @@ class MulticolorEngineRequest extends MetadataRequest
     }
 
     /// Get a counter for metadata queries specifying how many of the collection images meet that query.
-    
+
     /// Arguments:
     /// - `count_metadata`, a list of metadata queries which you want to count.
     ///
@@ -767,7 +767,7 @@ class MulticolorEngineRequest extends MetadataRequest
     /// Get a counter for metadata queries specifying how many of the collection images meet that query filtered by a list of colors and weights.
 
     /// Arguments:
-    /// - `colors`, a list of colors to be used for image filtering. 
+    /// - `colors`, a list of colors to be used for image filtering.
     ///    Can be RGB "255,255,255" or hex "ffffff" format.
     /// - `weights`, a list of weights to be used with the colors.
     /// - `count_metadata`, a list of metadata queries which you want to count.
@@ -793,7 +793,7 @@ class MulticolorEngineRequest extends MetadataRequest
     }
 
     /// Get a counter for metadata queries specifying how many of the collection images meet that query filtered by a list of images from the collection.
-    
+
     /// Arguments:
     /// - `filepaths`, a list of string filepaths as returned by
     ///    a search or list call.

@@ -8,7 +8,7 @@ require_once 'matchengine_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'mobileengine_request.php';
-///     >>> $api = new MobileEngineRequest('http://someengine.tineye.com/name/rest/');
+///     >>> $api = new MobileEngineRequest('http://mobileengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}

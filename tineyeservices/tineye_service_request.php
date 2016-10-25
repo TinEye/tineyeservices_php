@@ -4,14 +4,15 @@ require_once 'Requests/library/Requests.php';
 Requests::register_autoloader();
 
 /// \mainpage
-/// tineyeservices is a PHP client library for the MatchEngine, MobileEngine, and MulticolorEngine APIs.
+/// tineyeservices is a PHP client library for the MatchEngine, MobileEngine,
+/// MulticolorEngine and WineEngine APIs.
 ///
-/// MatchEngine, MobileEngine, and MulticolorEngine are general image-matching engines
-/// that allow you to perform large-scale image comparisons for a variety of tasks.
+/// MatchEngine, MobileEngine, MulticolorEngine and WineEngine are general image-matching
+/// engines that allow you to perform large-scale image comparisons for a variety of tasks.
 ///
-/// See http://services.tineye.com/ for more information.
+/// See https://services.tineye.com/ for more information.
 ///
-/// \copyright 2013 Idee Inc. All rights reserved worldwide.
+/// \copyright 2013-2016 Idee Inc. All rights reserved worldwide.
 
 /// The base class for all TinEye Services exceptions.
 class TinEyeServiceException extends Exception
