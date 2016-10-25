@@ -8,13 +8,13 @@ require_once 'matchengine_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'wineengine_request.php';
-///     >>> $api = new WineEngineRequest('http://wineengine.tineye.com/name/rest/');
+///     >>> $api = new WineEngineRequest('https://wineengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': [], u'status': u'ok'}
 ///
 /// Searching for an image using an image URL:
-///     >>> $api->search_url('http:///www.tineye.com/images/meloncat.jpg');
+///     >>> $api->search_url('http://www.tineye.com/images/meloncat.jpg');
 ///     {'error': [],
 ///      'method': 'search',
 ///      'result': [{'filepath': 'match1.png',

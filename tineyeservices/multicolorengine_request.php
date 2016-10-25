@@ -9,7 +9,7 @@ require_once 'metadata_request.php';
 /// Adding an image using data:
 ///     >>> require_once 'image.php';
 ///     >>> require_once 'multicolorengine_request.php';
-///     >>> $api = new MulticolorEngineRequest('http://multicolorengine.tineye.com/name/rest/');
+///     >>> $api = new MulticolorEngineRequest('https://multicolorengine.tineye.com/name/rest/');
 ///     >>> $image = new Image('/path/to/image.jpg');
 ///     >>> $api->add_image(array(image));
 ///     {u'error': [], u'method': u'add', u'result': ][, u'status': u'ok'}

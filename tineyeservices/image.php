@@ -10,7 +10,7 @@ require_once 'tineye_service_request.php';
 ///     >>> $image = new Image('/path/to/image.jpg', '', 'collection.jpg');
 ///
 /// Image URL:
-///     >>> $image = new Image('', 'http:///www.tineye.com/images/meloncat.jpg', 'collection.jpg');
+///     >>> $image = new Image('', 'http://www.tineye.com/images/meloncat.jpg', 'collection.jpg');
 ///
 /// Image with metadata:
 ///     >>> $metadata = json_encode(array("keywords" => array("dolphin")));
