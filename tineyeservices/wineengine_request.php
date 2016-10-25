@@ -1,6 +1,6 @@
 <?php
 
-require_once 'matchengine_request.php';
+require_once 'mobileengine_request.php';
 
 /// <b>A user class to send requests to a WineEngine API.</b>
 
@@ -24,7 +24,7 @@ require_once 'matchengine_request.php';
 /// </pre>
 ///
 /// \copyright 2016 Idee Inc. All rights reserved worldwide.
-class WineEngineRequest extends MatchEngineRequest
+class WineEngineRequest extends MobileEngineRequest
 {
     /// Return a human-readable description of the object.
     function __toString()
